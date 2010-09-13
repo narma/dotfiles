@@ -12,6 +12,36 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 # End of lines configured by zsh-newuser-install
+
+# colors
+autoload colors zsh/terminfo
+colors
+# set some colors
+for COLOR in RED GREEN YELLOW WHITE BLACK CYAN; do
+    eval PR_$COLOR='%{$fg[${(L)COLOR}]%}'
+    eval PR_BRIGHT_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
+done
+PR_RESET="%{${reset_color}%}";
+
+
+
+autoload -Uz vcs_info
+FMT_BRANCH="${PR_GREEN}%b%u%c${PR_RESET}" # e.g. master¹²
+FMT_ACTION="(${PR_CYAN}%a${PR_RESET}%)"   # e.g. (rebase-i)
+FMT_PATH="%R${PR_YELLOW}/%S"              # e.g. ~/repo/subdir
+
+# check-for-changes can be really slow.
+# # you should disable it, if you work with large repositories
+zstyle ':vcs_info:*'              enable            git svn bzr
+zstyle ':vcs_info:*'              check-for-changes true
+zstyle ':vcs_info:*'              get-revision      true
+zstyle ':vcs_info:*:prompt:*' check-for-changes true
+zstyle ':vcs_info:*:prompt:*' unstagedstr '¹'  # display ¹ if there are unstaged changes
+zstyle ':vcs_info:*:prompt:*' stagedstr '²'    # display ² if there are staged changes
+zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH}${FMT_ACTION}//" "${FMT_PATH}"
+zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}//"              "${FMT_PATH}"
+zstyle ':vcs_info:*:prompt:*' nvcsformats   ""                             "%~"
+
  
 # key bindings
 bindkey "\e[1~" beginning-of-line
@@ -42,14 +72,11 @@ bindkey '^i' expand-or-complete-prefix
 bindkey "\e[A" history-search-backward
 bindkey "\e[B" history-search-forward
  
-autoload colors zsh/terminfo
-colors
-
 #setopt prompt_subst
 #PROMPT="%{$terminfo[bold]$fg[green]%}[%(?..%{$fg[red]%}%?%{$fg[green]%}|)%{$fg[blue]%}%"'$((30 - ${(e)exit_code})'")<..<%/%{$fg[green]%}]$%{$terminfo[sgr0]%} "
 
 
-PROMPT="%{$terminfo[bold]$fg[yellow]%}%n%{$terminfo[sgr0]%}@%{$fg[yellow]%}%m%{$fg[default]%}:%{$fg[blue]%}%~%{$fg[default]%}$ "
+PROMPT="%{$terminfo[bold]$fg[yellow]%}%n%{$terminfo[sgr0]%}@%{$fg[yellow]%}%m%{$fg[default]%}:%{$fg[cyan]%}%~%{$fg[default]%}$ "
 
 ##### PROMPT STUFF #####
 #autoload -U promptinit
@@ -105,7 +132,6 @@ function pd() { cd /usr/ports/${1} }
 
 # Little stupid things to make life .. nice :)
 alias vi='vim'
-alias i='~/.bin/url.sh'
 alias lksc='xscreensaver-command -lock'
 
 # aliases
@@ -171,3 +197,12 @@ export GOARCH=amd64
 export GOOS=freebsd
 export GOBIN=$HOME/bin
 
+function precmd {
+    vcs_info 'prompt'
+    if [[ $vcs_info_msg_0_ != "no" ]]; then
+       RPROMPT="${vcs_info_msg_0_}"
+    fi
+}
+
+# rvm stuff
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
