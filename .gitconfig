@@ -1,0 +1,53 @@
+[user]
+	name = Sergey Rublev
+	email = narma.nsk@gmail.com
+[core]
+#	gitProxy="ssh" for "kernel.org"
+#	gitProxy=default-proxy ; for the rest
+	compression = 9
+	editor = vim
+
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+	re = remote
+	what = whatchanged
+	sh = !git-sh
+
+[color]
+	branch = auto
+	diff   = auto
+	interactive = auto
+	pager  = true
+	ui     = auto
+	status = true
+
+[diff]
+	renames = copy # basic rename detection + detect copies
+
+[commit]
+#	template = <file>
+#	Specify a file to use as the template for new commit messages.
+
+[rerere]
+	enabled = true
+
+[merge]
+	log = true
+	renameLimit = 1000000
+
+[mergetool]
+	keepBackup = true # true is the default
+
+[receive]
+	fsckObjects = true
+
+[status]
+	submodulesummary = true
+[giggle]
+	compact-mode = false
+	main-window-maximized = true
+	main-window-geometry = 0x0+0+0
+
