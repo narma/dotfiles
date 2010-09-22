@@ -75,8 +75,11 @@ bindkey "\e[B" history-search-forward
 #setopt prompt_subst
 #PROMPT="%{$terminfo[bold]$fg[green]%}[%(?..%{$fg[red]%}%?%{$fg[green]%}|)%{$fg[blue]%}%"'$((30 - ${(e)exit_code})'")<..<%/%{$fg[green]%}]$%{$terminfo[sgr0]%} "
 
-
-PROMPT="%{$terminfo[bold]$fg[yellow]%}%n%{$terminfo[sgr0]%}@%{$fg[yellow]%}%m%{$fg[default]%}:%{$fg[cyan]%}%~%{$fg[default]%}$ "
+if [[ "$UID" == "0" ]]; then
+    PROMPT="%{$terminfo[bold]$fg[red]%}%n%{$terminfo[sgr0]%}@%{$fg[yellow]%}%m%{$fg[default]%}:%{$fg[cyan]%}%~%{$fg[default]%}$ "
+else
+    PROMPT="%{$terminfo[bold]$fg[yellow]%}%n%{$terminfo[sgr0]%}@%{$fg[yellow]%}%m%{$fg[default]%}:%{$fg[cyan]%}%~%{$fg[default]%}$ "
+fi
 
 ##### PROMPT STUFF #####
 #autoload -U promptinit
@@ -206,3 +209,6 @@ function precmd {
 
 # rvm stuff
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# local stuff
+[[ -s "$HOME/.localsh" ]] && source "$HOME/.localsh"
