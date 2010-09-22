@@ -75,7 +75,7 @@ bindkey "\e[B" history-search-forward
 #setopt prompt_subst
 #PROMPT="%{$terminfo[bold]$fg[green]%}[%(?..%{$fg[red]%}%?%{$fg[green]%}|)%{$fg[blue]%}%"'$((30 - ${(e)exit_code})'")<..<%/%{$fg[green]%}]$%{$terminfo[sgr0]%} "
 
-if [[ "$UID" == "0" ]]; then
+if [[ "`id -u`" == "0" ]]; then
     PROMPT="%{$terminfo[bold]$fg[red]%}%n%{$terminfo[sgr0]%}@%{$fg[yellow]%}%m%{$fg[default]%}:%{$fg[cyan]%}%~%{$fg[default]%}$ "
 else
     PROMPT="%{$terminfo[bold]$fg[yellow]%}%n%{$terminfo[sgr0]%}@%{$fg[yellow]%}%m%{$fg[default]%}:%{$fg[cyan]%}%~%{$fg[default]%}$ "
