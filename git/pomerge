@@ -1,0 +1,10 @@
+#!/bin/sh
+#msgmerge $1 $2 -o $2
+# %O %A %B
+
+#cp $1 /tmp/git_1_$1
+#cp $3 /tmp/git_3_$3
+#cp $2 /tmp/git_2_$2
+
+
+msgcat --use-first $2 $3 > $2.tmp && mv -f $2.tmp $2
