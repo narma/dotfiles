@@ -163,6 +163,7 @@ alias ..='cd ..'
 alias i='ipython'
 # alias tsl="tail -f /var/log/syslog"
 alias df="df -hT"
+alias efte="efte -Ttags"
 
 
 # BSD, but not *ports* specific.
@@ -183,6 +184,7 @@ stty -ixon -ixoff
  
 export GREP_COLOR="1;33"
 export PATH="/usr/sbin:/usr/local/sbin:$PATH"
+[ -d "$HOME/bin" ] && export PATH=$PATH:$HOME/bin
 
 export PYTHONSTARTUP=~/.pythonrc 
 export PAGER=most
@@ -195,10 +197,14 @@ function go() {
    rm $NAME.6;
 #   echo "'$NAME'"
 }
+
+# Go stuff.
 export GOROOT=$HOME/go
 export GOARCH=amd64
-export GOOS=freebsd
-export GOBIN=$HOME/bin
+export GOOS=linux
+export GOBIN=$GOROOT/bin
+export PATH="$PATH:$GOBIN"
+
 
 function precmd {
     vcs_info 'prompt'
