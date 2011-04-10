@@ -8,13 +8,22 @@
 	editor = vim
 
 [alias]
-	st = status
-	ci = commit
-	co = checkout
-	br = branch
-	re = remote
-	what = whatchanged
-	sh = !git-sh
+  current-branch = "!git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'"
+  a = "!git add . && git status"
+  ch = checkout
+  c = commit -m
+  ac = commit -am
+  d = diff
+  l = "!git pull origin $(git current-branch)"
+  h = "!git push origin $(git current-branch)"
+  lh = "!git l && git h"
+  r = "!git status | grep deleted: | cut -f 2 -d : | xargs git rm"
+
+  st = status
+  br = branch
+  re = remote
+  what = whatchanged
+  sh = !git-sh
 
 [color]
 	branch = auto
@@ -51,3 +60,10 @@
 	main-window-maximized = true
 	main-window-geometry = 0x0+0+0
 
+[diff "podiff"]
+    textconv = strippocomments
+
+[merge "pomerge"]
+    name = merge driver fo .po gettext files
+    driver = pomerge %O %A %B
+    recursive = binary
