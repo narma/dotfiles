@@ -200,7 +200,11 @@ function go() {
 
 # Go stuff.
 export GOROOT=$HOME/go
-export GOARCH=amd64
+if [[ "`uname -m`" == "x86_64" ]]; then
+    export GOARCH=amd64
+else
+    export GOARCH=386
+fi
 export GOOS=linux
 export GOBIN=$GOROOT/bin
 export PATH="$PATH:$GOBIN"
