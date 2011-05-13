@@ -199,15 +199,21 @@ function go() {
 }
 
 # Go stuff.
-export GOROOT=$HOME/go
-if [[ "`uname -m`" == "x86_64" ]]; then
-    export GOARCH=amd64
+
+ARCH_GO_ENV="/etc/profile.d/go.sh"
+if [ -f $ARCH_GO_ENV ]; then
+    source $ARCH_GO_ENV
 else
-    export GOARCH=386
+    export GOROOT=$HOME/go
+    if [[ "`uname -m`" == "x86_64" ]]; then
+        export GOARCH=amd64
+    else
+        export GOARCH=386
+    fi
+    export GOOS=linux
+    export GOBIN=$GOROOT/bin
+    export PATH="$PATH:$GOBIN"
 fi
-export GOOS=linux
-export GOBIN=$GOROOT/bin
-export PATH="$PATH:$GOBIN"
 
 
 function precmd {
