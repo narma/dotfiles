@@ -1,6 +1,7 @@
 [user]
 	name = Sergey Rublev
 	email = narma.nsk@gmail.com
+
 [core]
 #	gitProxy="ssh" for "kernel.org"
 #	gitProxy=default-proxy ; for the rest
@@ -14,11 +15,14 @@
   c = commit -m
   ac = commit -am
   d = diff
-  l = "!git pull origin $(git current-branch)"
-  h = "!git push origin $(git current-branch)"
-  lh = "!git l && git h"
+  unstage = reset HEAD --
+  pl = "!git pull origin $(git current-branch)"
+  ph = "!git push origin $(git current-branch)"
+  plh = "!git l && git h"
   r = "!git status | grep deleted: | cut -f 2 -d : | xargs git rm"
-
+  lg = "log --pretty=format:'%C(yellow)%h%Creset %s %Cblue%d%Creset' --graph"
+  content = "!git cat-file -p $(git ls-tree $1 $2 | cut -d " " -f 3 | cut -f 1)"
+  ri = rebase --interactive --autosquash
   st = status
   br = branch
   re = remote
@@ -35,6 +39,12 @@
 
 [diff]
 	renames = copy # basic rename detection + detect copies
+  renameLimit = 0
+  mnemonicprefix = true
+  noprefix = true
+
+[log]
+  date = local
 
 [commit]
 #	template = <file>
@@ -46,6 +56,14 @@
 [merge]
 	log = true
 	renameLimit = 1000000
+  tool = meld
+
+[push]
+    default = current
+
+[rebase]
+    stat = true
+    autosquash = true
 
 [mergetool]
 	keepBackup = true # true is the default
