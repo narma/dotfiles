@@ -1,6 +1,6 @@
 [user]
-	name = Sergey Rublev
-	email = narma.nsk@gmail.com
+  name = Sergey Rublev
+  email = narma.nsk@gmail.com
 
 [core]
 #	gitProxy="ssh" for "kernel.org"
@@ -16,7 +16,7 @@
   ac = commit -am
   d = diff
   unstage = reset HEAD --
-  pl = "!git pull origin $(git current-branch)"
+  pl = "!git pull origin $(git current-branch) --rebase"
   ph = "!git push origin $(git current-branch)"
   plh = "!git l && git h"
   r = "!git status | grep deleted: | cut -f 2 -d : | xargs git rm"
@@ -28,6 +28,8 @@
   re = remote
   what = whatchanged
   sh = !git-sh
+  splice = add -i
+  splice-commit = checkout -p
 
 [color]
 	branch = auto
