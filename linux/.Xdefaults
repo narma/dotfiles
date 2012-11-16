@@ -1,0 +1,69 @@
+# link .Xresources to that file
+! urxvt settings
+
+
+!--[Title]--!
+
+URxvt*title:              urxvt
+! URxvt*termName:           rxvt-unicode
+URxvt*cursorBlink:        true
+URxvt*urgentOnBell:       true
+
+!--[URL Select]--!
+URxvt.perl-ext-common:  default,url-select
+URxvt.keysym.M-u:       perl:url-select:select_next
+URxvt.urlLauncher:      chromium
+URxvt.underlineURLs:    true
+
+!--[Fonts]--!
+
+!URxvt.font: -*-terminus-*-*-*-*-14-*-*-*-*-*-*-u
+!URxvt.font: -*-droid sans mono-*-*-*-*-14-*-*-*-*-*-*-u
+!URxvt.font:xft:Bitstream Vera Sans Mono:pixelsize=14
+!URxvt.font:               xft:terminus:pixelsize=16:antialias=false
+URxvt.font:xft:DroidSansMono:pixelsize=16
+!
+URxvt.scrollBar:         false
+URxvt.skipBuiltinGlyphs: true
+
+!--[Urxvt Options]--!
+
+URxvt.boldMode:          false
+!URxvt.imLocale:          en_US.UTF-8
+URxvt.loginShell:        true
+URxvt.saveLines:         512
+!urxvt.geometry:          110x40
+URxvt.borderless:        true
+!URxvt.xftAntialias:      true
+URxvt.jumpScroll:        true
+URxvt.tintColor:         white
+URxvt.internalBorder:    0
+URxvt.cursorBlink:       false
+URxvt.cursorColor:       #dd9900
+URxvt.cursorColor2:      #000000
+URxvt.background:        #272822
+URxvt.foreground:        #F8F8F2
+URxvt.colorBD:           #ffffff
+URxvt.colorIT:           #bbbbbb
+URxvt.colorUL:           #999999
+URxvt.underlineColor:    #999999
+!Xcursor.theme: CG
+
+!## teh transparency stuff
+URxvt.inheritPixmap: true
+URxvt.shading: 40
+
+
+
+! Xft settings ---------------------------------------------------------------
+
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+! hintnone, hintslight, hintmedium, hintfull
+Xft.hintstyle:  hintslight
+! lcdnone, lcddefault, lcdlight, lcdlegacy
+Xft.lcdfilter:  lcddefault
+
+

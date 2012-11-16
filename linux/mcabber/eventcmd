@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# $events_command MSG IN jabber@id [file]
+case $1 in 
+  MSG)
+    case $2 in
+      IN)
+        twmnc -t mcabber -c "new message from $3"
+        ;;
+    esac
+    ;;
+esac
+

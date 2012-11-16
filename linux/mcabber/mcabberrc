@@ -1,0 +1,41 @@
+set priority = 1
+set priority_away = 0
+
+# SSL/TLS options:
+# TLS is now regarded as the default encryption for connecting to jabber.
+# You can require TLS by setting tls to 1.  If your jabber server
+# still doesn't support TLS, you can use the old-style SSL by setting
+# ssl to 1.  It's not possible to use old-style SSL and TLS together.
+#set ssl = 0
+set tls = 1
+set ssl_ignore_checks = 0
+
+
+set lang = ru
+
+set spell_enable = 1
+set spell_lang = ru_RU
+set spell_encoding = UTF-8
+
+set statefile = ~/.mcabber/mcabber.state
+
+### BINDS
+
+#F9
+bind 273 = roster toggle
+#F10
+bind 274 = roster toggle_offline
+#F6
+bind 270 = roster unread_next
+#C-PgUp
+bind MK3 = buffer up
+#C-PgDown
+bind MK4 = buffer down
+#C-l
+bind 130 = buffer clear
+
+
+# EVENTS
+
+set events_ignore_active_window = 0
+set events_command = ~/.mcabber/eventcmd
