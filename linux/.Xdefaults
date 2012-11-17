@@ -1,4 +1,4 @@
-# link .Xresources to that file
+! link .Xresources to that file
 ! urxvt settings
 
 
@@ -41,7 +41,7 @@ URxvt.internalBorder:    0
 URxvt.cursorBlink:       false
 URxvt.cursorColor:       #dd9900
 URxvt.cursorColor2:      #000000
-URxvt.background:        #272822
+URxvt.background:        #171812
 URxvt.foreground:        #F8F8F2
 URxvt.colorBD:           #ffffff
 URxvt.colorIT:           #bbbbbb
