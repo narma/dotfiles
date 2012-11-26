@@ -166,6 +166,7 @@ alias ..='cd ..'
 alias df="df -hT"
 alias efte="efte -Ttags"
 alias eman="erl -man"
+alias e="rlwrap -a erl"
 
 
 # BSD, but not *ports* specific.
