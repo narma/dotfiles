@@ -32,7 +32,7 @@ FMT_PATH="%R${PR_YELLOW}/%S"              # e.g. ~/repo/subdir
 
 # check-for-changes can be really slow.
 # # you should disable it, if you work with large repositories
-zstyle ':vcs_info:*'              enable            git svn bzr
+zstyle ':vcs_info:*'              enable            git svn bzr hg
 zstyle ':vcs_info:*'              check-for-changes true
 zstyle ':vcs_info:*'              get-revision      true
 zstyle ':vcs_info:*:prompt:*' check-for-changes true
@@ -42,6 +42,7 @@ zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH}${FMT_ACTION}//" "${FM
 zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}//"              "${FMT_PATH}"
 zstyle ':vcs_info:*:prompt:*' nvcsformats   ""                             "%~"
 
+zstyle ':vcs_info:hg*' actionformats "(%s|%a)[%i%u %b %m]"
  
 # key bindings
 bindkey "\e[1~" beginning-of-line
