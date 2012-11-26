@@ -72,6 +72,7 @@ bindkey '^i' expand-or-complete-prefix
  
 bindkey "\e[A" history-search-backward
 bindkey "\e[B" history-search-forward
+bindkey \^U backward-kill-line
  
 #setopt prompt_subst
 #PROMPT="%{$terminfo[bold]$fg[green]%}[%(?..%{$fg[red]%}%?%{$fg[green]%}|)%{$fg[blue]%}%"'$((30 - ${(e)exit_code})'")<..<%/%{$fg[green]%}]$%{$terminfo[sgr0]%} "
