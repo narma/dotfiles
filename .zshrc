@@ -123,7 +123,7 @@ esac
 }
  
 export EDITOR='vim'
-export BROWSER='chromium-browser'
+export BROWSER='chromium'
 
 # Ports-Specific:
 alias p='psearch'
@@ -165,6 +165,7 @@ alias ..='cd ..'
 # alias tsl="tail -f /var/log/syslog"
 alias df="df -hT"
 alias efte="efte -Ttags"
+alias eman="erl -man"
 
 
 # BSD, but not *ports* specific.
@@ -183,9 +184,12 @@ alias pc="rsync -rP"
 stty -ixon -ixoff
  
 export GREP_COLOR="1;33"
+
+## PATH extends
 export PATH="/usr/sbin:/usr/local/sbin:$PATH"
 [ -d "$HOME/bin" ] && export PATH=$PATH:$HOME/bin
 [ -d "$HOME/.local/bin" ] && export PATH="${PATH}:${HOME}/.local/bin"
+[ -d "$HOME/node_modules/.bin" ] && export PATH="${PATH}:${HOME}/node_modules/.bin"
 
 export PYTHONSTARTUP=~/.pythonrc 
 export PAGER=most
